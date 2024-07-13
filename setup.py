@@ -1,28 +1,28 @@
 from setuptools import find_packages, setup
-from typing import List # type: ignore
+from typing import List
 
 HYPHEN_E_DOT = '-e .'
 
-def get_requirements(file_path:str)->List[str]:
+def get_requirements(file_path: str) -> List[str]:
     '''
-    this function will return the list of requirements
+    This function will return the list of requirements.
     '''
-    requirements=[]
+    requirements = []
     with open(file_path) as file_obj:
-        requirements=file_obj.readlines()
+        requirements = file_obj.readlines()
         requirements = [req.replace("\n", "") for req in requirements]
 
         if HYPHEN_E_DOT in requirements:
             requirements.remove(HYPHEN_E_DOT)
 
+    print("Requirements to install:", requirements)  # Debugging line
     return requirements
 
 setup(
-name='ML Project',
-version='0.0.1',
-author='Nikhil',
-author_email='nikhilarora0309@gmail.com',
-packages=find_packages(),
-install_requires=get_requirements('requirements.txt')   
-
+    name='ML Project',
+    version='0.0.1',
+    author='Nikhil',
+    author_email='nikhilarora0309@gmail.com',
+    packages=find_packages(),
+    install_requires=get_requirements('requirements.txt')
 )
